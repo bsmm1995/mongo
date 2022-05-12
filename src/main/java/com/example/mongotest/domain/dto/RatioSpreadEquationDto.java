@@ -13,8 +13,6 @@ import java.util.List;
  */
 @Data
 public class RatioSpreadEquationDto extends AuditDto implements Serializable {
-    private Long id;
-    private Long ratioId;
     private Integer period;
     private String equation;
     private List<RatioSpreadCellDto> ratioSpreadCellList = new ArrayList<>(0);

@@ -1,27 +1,25 @@
 package com.example.mongotest.domain.entities;
 
 import com.example.mongotest.domain.base.Audit;
+import com.example.mongotest.domain.dto.HardFiltersDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
  * @author: Bladimir Minga <bsminga@pichincha.com>
  * @version: 26/04/2022
  */
-@Document("CAR_SCOPES")
+@Document("car_cases_detail")
 @Getter
 @Setter
-public class Scope extends Audit {
+public class CaseDetail extends Audit {
     @Id
-    @NotBlank
     private String id;
-    private String typeRatingId;
-    private String description;
-    private Double percentage;
-    private List<ClassificationInformation> classificationInformationList;
+    private String caseId;
+    private List<HardFiltersDto> hardFilters;
+    private TypeRating detail;
 }

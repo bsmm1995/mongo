@@ -13,8 +13,6 @@ import java.util.List;
  */
 @Data
 public class RatioDto extends AuditDto implements Serializable {
-    private Long id;
-    private Long classificationInformationId;
     private String description;
     private List<RatioDetailDto> ratioDetailList = new ArrayList<>(0);
 }

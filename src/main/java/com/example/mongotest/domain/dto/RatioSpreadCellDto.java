@@ -11,8 +11,6 @@ import java.io.Serializable;
  */
 @Data
 public class RatioSpreadCellDto extends AuditDto implements Serializable {
-    private Long id;
-    private Long ratioEquationId;
     private String row;
     private String column;
 }

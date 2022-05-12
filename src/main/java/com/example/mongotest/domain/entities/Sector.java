@@ -8,25 +8,22 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
  * @author: Bladimir Minga <bsminga@pichincha.com>
  * @version: 26/04/2022
  */
-@Document("CAR_SECTORS")
+@Document("car_sectors")
 @Getter
 @Setter
 public class Sector extends Audit {
     @Id
-    @NotBlank
     private String id;
 
     @Field(value = "description")
-    @NotBlank
     private String description;
 
-    @DBRef
+    @DBRef(lazy = true)
     private List<TypeRating> typeRatingList;
 }

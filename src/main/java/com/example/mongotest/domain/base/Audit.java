@@ -2,6 +2,7 @@ package com.example.mongotest.domain.base;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 
@@ -14,7 +15,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Audit {
-    private LocalDate createdDate = LocalDate.now();
+
+    @CreatedDate
+    private LocalDate createdDate;
 
     private LocalDate modifiedDate;
 

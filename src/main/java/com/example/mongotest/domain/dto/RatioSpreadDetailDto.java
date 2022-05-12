@@ -11,8 +11,6 @@ import java.io.Serializable;
  */
 @Data
 public class RatioSpreadDetailDto extends AuditDto implements Serializable {
-    private Long id;
-    private Long ratioId;
     private Integer score = 0;
     private Boolean isMinimumOrMaximum = Boolean.FALSE;
     private Integer minimum;

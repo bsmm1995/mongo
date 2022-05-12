@@ -13,8 +13,6 @@ import java.util.List;
  */
 @Data
 public class ScopeDto extends AuditDto implements Serializable {
-    private Long id;
-    private Long typeRatingId;
     private String description;
     private List<ClassificationInformationDto> classificationInformationList = new ArrayList<>(0);
 }
