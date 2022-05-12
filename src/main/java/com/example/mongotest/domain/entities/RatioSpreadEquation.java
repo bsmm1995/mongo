@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -17,8 +18,9 @@ import java.util.List;
 @Setter
 public class RatioSpreadEquation extends Audit {
     @Id
-    private Long id;
-    private Long ratioId;
+    @NotBlank
+    private String id;
+    private String ratioId;
     private Integer period;
     private String equation;
     private List<RatioSpreadCell> ratioSpreadCellList;

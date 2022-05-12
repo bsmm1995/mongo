@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -17,8 +18,9 @@ import java.util.List;
 @Setter
 public class ClassificationInformation extends Audit {
     @Id
-    private Long id;
-    private Long scopeId;
+    @NotBlank
+    private String id;
+    private String scopeId;
     private String description;
     private List<Ratio> ratioList;
 }

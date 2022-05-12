@@ -6,6 +6,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @author: Bladimir Minga <bsminga@pichincha.com>
  * @version: 26/04/2022
@@ -15,8 +17,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class RatioSpreadCell extends Audit {
     @Id
-    private Long id;
-    private Long ratioEquationId;
+    @NotBlank
+    private String id;
+    private String ratioEquationId;
     private String row;
     private String column;
 }
