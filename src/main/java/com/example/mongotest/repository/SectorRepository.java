@@ -4,7 +4,9 @@ import com.example.mongotest.domain.entities.Sector;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface SectorRepository extends MongoRepository<Sector, String> {
-    Sector findItemByDescription(String description);
+    Optional<Sector> findItemByDescription(String description);
 }

@@ -1,14 +1,13 @@
 package com.example.mongotest.domain.entities;
 
-import com.example.mongotest.domain.base.Audit;
+import com.example.mongotest.domain.base.AuditMetadata;
 import com.example.mongotest.domain.dto.RatioSpreadDetailDto;
 import com.example.mongotest.domain.dto.RatioSpreadEquationDto;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -18,14 +17,18 @@ import java.util.List;
 @Document("car_ratios_spread")
 @Getter
 @Setter
-public class RatioSpread extends Audit {
-    @Id
-    private String id;
+public class RatioSpread extends AuditMetadata {
     private String description;
+
+    @Field(value = "is_percentage")
     private Boolean isPercentage;
     private Double percentagePeriod1;
     private Double percentagePeriod2;
     private Double percentagePeriod3;
+
+    @Field(value = "ratio_spread_equations")
     private List<RatioSpreadEquationDto> ratioSpreadEquationList;
+
+    @Field(value = "ratio_spread_details")
     private List<RatioSpreadDetailDto> ratioSpreadDetailList;
 }

@@ -1,11 +1,11 @@
 package com.example.mongotest.domain.entities;
 
-import com.example.mongotest.domain.base.Audit;
+import com.example.mongotest.domain.base.AuditMetadata;
 import com.example.mongotest.domain.dto.HardFiltersDto;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -16,10 +16,11 @@ import java.util.List;
 @Document("car_cases_detail")
 @Getter
 @Setter
-public class CaseDetail extends Audit {
-    @Id
-    private String id;
+public class CaseDetail extends AuditMetadata {
+    @Field(value = "case_id")
     private String caseId;
+
+    @Field(value = "hard_filters")
     private List<HardFiltersDto> hardFilters;
     private TypeRating detail;
 }

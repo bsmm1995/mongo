@@ -1,9 +1,8 @@
 package com.example.mongotest.domain.entities;
 
-import com.example.mongotest.domain.base.Audit;
+import com.example.mongotest.domain.base.AuditMetadata;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -17,13 +16,10 @@ import java.util.List;
 @Document("car_sectors")
 @Getter
 @Setter
-public class Sector extends Audit {
-    @Id
-    private String id;
-
-    @Field(value = "description")
+public class Sector extends AuditMetadata {
     private String description;
 
+    @Field(value = "types_rating")
     @DBRef(lazy = true)
     private List<TypeRating> typeRatingList;
 }

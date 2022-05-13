@@ -1,5 +1,6 @@
 package com.example.mongotest.controller;
 
+import com.example.mongotest.domain.dto.SectorDto;
 import com.example.mongotest.domain.entities.Sector;
 import com.example.mongotest.service.SectorService;
 import com.example.mongotest.util.Dto;
@@ -42,14 +43,14 @@ public class SectorController {
     }
 
     @PostMapping(headers = "Accept=application/json;charset=UTF-8")
-    public ResponseEntity<Sector> create(@RequestBody @Valid Sector data, BindingResult bindingResult) {
+    public ResponseEntity<SectorDto> create(@RequestBody @Valid SectorDto data, BindingResult bindingResult) {
         log.info("Endpoint to create a sector");
         Dto.validate(bindingResult);//The utility is invoked to validate the DTO
         return new ResponseEntity<>(this.sectorService.create(data), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}", headers = "Accept=application/json;charset=UTF-8")
-    public ResponseEntity<Sector> update(@PathVariable @NotBlank String id, @RequestBody @Valid Sector data, BindingResult bindingResult) {
+    public ResponseEntity<SectorDto> update(@PathVariable @NotBlank String id, @RequestBody @Valid SectorDto data, BindingResult bindingResult) {
         log.info("Endpoint to update a sector");
         Dto.validate(bindingResult);//The utility is invoked to validate the DTO
         return new ResponseEntity<>(this.sectorService.update(id, data), HttpStatus.OK);

@@ -1,8 +1,10 @@
 package com.example.mongotest.service.impl;
 
+import com.example.mongotest.domain.dto.SectorDto;
 import com.example.mongotest.domain.entities.Sector;
 import com.example.mongotest.repository.SectorRepository;
 import com.example.mongotest.service.SectorService;
+import com.example.mongotest.util.Mapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -36,17 +38,19 @@ public class SectorServiceImpl implements SectorService {
     }
 
     @Override
-    public Sector create(Sector data) {
-        return sectorRepository.save(data);
+    public SectorDto create(SectorDto data) {
+        Sector sector = Mapper.modelMapper().map(data, Sector.class);
+        return Mapper.modelMapper().map(sectorRepository.save(sector), SectorDto.class);
     }
 
     @Override
-    public Sector update(String id, Sector data) {
+    public SectorDto update(String id, SectorDto data) {
         Optional<Sector> sectorOptional = sectorRepository.findById(id);
         if (sectorOptional.isEmpty()) {
             throwExceptionNotFound(id);
         }
-        return sectorRepository.save(data);
+        sectorOptional.get().setDescription(data.getDescription());
+        return Mapper.modelMapper().map(sectorRepository.save(sectorOptional.get()), SectorDto.class);
     }
 
     @Override

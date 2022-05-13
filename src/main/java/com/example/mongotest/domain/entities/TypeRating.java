@@ -1,12 +1,12 @@
 package com.example.mongotest.domain.entities;
 
-import com.example.mongotest.domain.base.Audit;
+import com.example.mongotest.domain.base.AuditMetadata;
 import com.example.mongotest.domain.dto.ScopeDto;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -17,14 +17,13 @@ import java.util.List;
 @Document("car_type_rating")
 @Getter
 @Setter
-public class TypeRating extends Audit {
-    @Id
-    private String id;
-
+public class TypeRating extends AuditMetadata {
     private String description;
 
+    @Field(value = "scopes")
     private List<ScopeDto> scopeList;
 
+    @Field(value = "ratios_spread")
     @DBRef(lazy = true)
     private List<RatioSpread> ratioSpreadList;
 }

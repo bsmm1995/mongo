@@ -1,5 +1,6 @@
 package com.example.mongotest.service;
 
+import com.example.mongotest.domain.dto.SectorDto;
 import com.example.mongotest.domain.entities.Sector;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public interface SectorService {
 
     List<Sector> getAll();
 
-    Sector create(Sector data);
+    SectorDto create(SectorDto data);
 
-    Sector update(String id, Sector data);
+    SectorDto update(String id, SectorDto data);
 
     String deleteById(String id);
 }
