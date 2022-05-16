@@ -39,6 +39,10 @@ public class SectorServiceImpl implements SectorService {
 
     @Override
     public SectorDto create(SectorDto data) {
+        Optional<Sector> sectorOptional = sectorRepository.findByDescription(data.getDescription());
+        if (sectorOptional.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Sector %s is already registered", data.getDescription()));
+        }
         Sector sector = Mapper.modelMapper().map(data, Sector.class);
         return Mapper.modelMapper().map(sectorRepository.save(sector), SectorDto.class);
     }

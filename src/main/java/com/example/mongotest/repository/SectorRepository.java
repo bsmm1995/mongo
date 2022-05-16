@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface SectorRepository extends MongoRepository<Sector, String> {
-    Optional<Sector> findItemByDescription(String description);
+    Optional<Sector> findByDescription(String description);
 }
