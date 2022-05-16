@@ -1,9 +1,9 @@
 package com.example.mongotest.domain.dto;
 
-import com.example.mongotest.domain.base.AuditMetadata;
 import com.example.mongotest.domain.entities.RatioSpread;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +11,7 @@ import java.util.List;
  * @version: 26/04/2022
  */
 @Data
-public class TypeRatingDto extends AuditMetadata {
+public class TypeRatingDto implements Serializable {
     private String description;
     private List<ScopeDto> scopeList;
     private List<RatioSpread> ratioSpreadList;

@@ -1,8 +1,8 @@
 package com.example.mongotest.domain.dto;
 
-import com.example.mongotest.domain.base.AuditMetadata;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,12 +10,10 @@ import java.util.List;
  * @version: 26/04/2022
  */
 @Data
-public class RatioSpreadDto extends AuditMetadata {
+public class RatioSpreadDto implements Serializable {
     private String description;
     private Boolean isPercentage;
-    private Double percentagePeriod1;
-    private Double percentagePeriod2;
-    private Double percentagePeriod3;
+    private List<PercentageDto> percentageList;
     private List<RatioSpreadEquationDto> ratioSpreadEquationList;
     private List<RatioSpreadDetailDto> ratioSpreadDetailList;
 }

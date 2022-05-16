@@ -1,6 +1,5 @@
 package com.example.mongotest.service;
 
-import com.example.mongotest.domain.base.AuditDto;
 import com.example.mongotest.domain.dto.RatioSpreadDto;
 import com.example.mongotest.domain.dto.outs.RatioSpreadOutDto;
 

@@ -1,6 +1,5 @@
 package com.example.mongotest.domain.dto;
 
-import com.example.mongotest.domain.base.AuditDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +11,7 @@ import java.util.List;
  * @version: 26/04/2022
  */
 @Data
-public class RatioDto extends AuditDto implements Serializable {
+public class RatioDto implements Serializable {
     private String description;
     private List<RatioDetailDto> ratioDetailList = new ArrayList<>(0);
 }

@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @version: 26/04/2022
  */
 @Data
-public class RatioSpreadCellDto implements Serializable {
-    private String row;
-    private String column;
+public class PercentageDto implements Serializable {
+    private Integer period;
+    private Double value;
 }

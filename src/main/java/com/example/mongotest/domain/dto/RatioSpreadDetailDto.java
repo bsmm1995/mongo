@@ -1,6 +1,5 @@
 package com.example.mongotest.domain.dto;
 
-import com.example.mongotest.domain.base.AuditDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,7 +9,7 @@ import java.io.Serializable;
  * @version: 26/04/2022
  */
 @Data
-public class RatioSpreadDetailDto extends AuditDto implements Serializable {
+public class RatioSpreadDetailDto implements Serializable {
     private Integer score = 0;
     private Boolean isMinimumOrMaximum = Boolean.FALSE;
     private Integer minimum;
