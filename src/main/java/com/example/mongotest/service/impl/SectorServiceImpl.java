@@ -25,7 +25,7 @@ public class SectorServiceImpl implements SectorService {
 
     @Override
     public Sector getById(String id) {
-        Optional<Sector> sectorOptional = sectorRepository.findById(id);
+        Optional<Sector> sectorOptional = sectorRepository.findByIdAndStatus(id, Boolean.TRUE);
         if (sectorOptional.isEmpty()) {
             throwExceptionNotFound(id);
         }
@@ -33,23 +33,23 @@ public class SectorServiceImpl implements SectorService {
     }
 
     @Override
-    public List<Sector> getAll() {
-        return sectorRepository.findAll();
+    public List<Sector> getAll() {//6282d604a1f7a96a539473c2
+        return sectorRepository.findAllByStatus(Boolean.TRUE);
     }
 
     @Override
     public SectorDto create(SectorDto data) {
-        Optional<Sector> sectorOptional = sectorRepository.findByDescription(data.getDescription());
+        Optional<Sector> sectorOptional = sectorRepository.findByDescriptionAndStatus(data.getDescription(), Boolean.TRUE);
         if (sectorOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Sector %s is already registered", data.getDescription()));
         }
         Sector sector = Mapper.modelMapper().map(data, Sector.class);
-        return Mapper.modelMapper().map(sectorRepository.save(sector), SectorDto.class);
+        return Mapper.modelMapper().map(sectorRepository.insert(sector), SectorDto.class);
     }
 
     @Override
     public SectorDto update(String id, SectorDto data) {
-        Optional<Sector> sectorOptional = sectorRepository.findById(id);
+        Optional<Sector> sectorOptional = sectorRepository.findByIdAndStatus(id, Boolean.TRUE);
         if (sectorOptional.isEmpty()) {
             throwExceptionNotFound(id);
         }
@@ -59,11 +59,12 @@ public class SectorServiceImpl implements SectorService {
 
     @Override
     public String deleteById(String id) {
-        Optional<Sector> sectorOptional = sectorRepository.findById(id);
+        Optional<Sector> sectorOptional = sectorRepository.findByIdAndStatus(id, Boolean.TRUE);
         if (sectorOptional.isEmpty()) {
             throwExceptionNotFound(id);
         }
-        sectorRepository.deleteById(id);
+        sectorOptional.get().setStatus(Boolean.FALSE);
+        sectorRepository.save(sectorOptional.get());
         return id;
     }
 
